@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.mainGrid{
+  width: 90%;
+  background-color: grey;
+  margin: auto;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 5px;
+}
+
+.gridSquare{
+  width: 60px;
+  height: 60px;
+  outline: 1px solid black;
+  display: flex; 
+  margin: 5px;
+  display: inline-flex;
+}
