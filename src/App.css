@@ -51,6 +51,11 @@
   height: 60px;
   outline: 1px solid black;
   display: flex; 
-  margin: 5px;
+  margin: 3px;
   display: inline-flex;
+  border-radius: 3px;
+}
+
+.selected{
+  background-color: aqua;
 }
