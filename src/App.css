@@ -2,44 +2,102 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mainInput{
+  width: 95%;
+  margin: auto;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 5px;
+  border: 1px solid black; 
+  padding-top: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.colDiv{
+  margin-top: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.inputBox{
+  all: unset;
+  text-align: left;
+  display: inline-block;
+  width: 80px;
+  font-size: 32px;
+  max-height: 24px; 
+  margin: auto;
+  border: 1px solid black;
+  padding: 5px;
+  vertical-align: text-top;
+} 
+
+.disabledInput{
+  border: 1px solid grey ;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 8px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: text-top;
+  white-space: nowrap;
+  word-wrap: break-word;
+  margin-left: 5px;
+  margin-top: 2px;
+  width: 80px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4:-webkit-details-marker {
+  display: none;
 }
 
 .mainGrid{
-  width: 90%;
-  background-color: grey;
+  width: 95%;
+  background-color:beige;
   margin: auto;
   text-align: center;
   margin-top: 2rem;
@@ -47,15 +105,18 @@
 }
 
 .gridSquare{
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   outline: 1px solid black;
   display: flex; 
   margin: 3px;
   display: inline-flex;
   border-radius: 3px;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected{
   background-color: aqua;
-}
+} 
+
