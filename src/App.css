@@ -61,7 +61,7 @@
   word-wrap: break-word;
   margin-left: 5px;
   margin-top: 2px;
-  width: 80px;
+  
 }
 
 .button-4:hover {
@@ -116,7 +116,34 @@
   align-items: center;
 }
 
+.gridSquare:hover{
+  cursor: pointer;
+}
+
 .selected{
   background-color: aqua;
 } 
 
+.start{
+  background-color: greenyellow;
+}
+
+.end{
+  background-color: pink;
+}
+
+.blueButton{
+  background-color: aqua !important;
+}
+
+.pinkButton{
+  background-color: pink  !important;
+}
+
+.greenButton{
+  background-color: greenyellow !important;
+}
+
+.selectedButton{
+  border-color: black;
+}
