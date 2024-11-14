@@ -11,24 +11,30 @@ export default function GridPoint(x, y, rows, cols, wallSquares) {
     this.updateNeighbors = function (grid) {
       let i = this.x;
       let j = this.y;
-      if (i < cols - 1) {
+      if (i < rows - 1) {
         if(!wallSquares.includes(`${i+1},${j}`)){
-            this.neighbors.push(grid[i + 1][j]);
+            
+                this.neighbors.push(grid[i + 1][j]);
+                //console.log('above');
+            
         }
       }
       if (i > 0) {
         if(!wallSquares.includes(`${i-1},${j}`)){
             this.neighbors.push(grid[i - 1][j]);
+            //console.log('below');
         }
       }
-      if (j < rows - 1) {
+      if (j < cols - 1) {
         if(!wallSquares.includes(`${i},${j+1}`)){
         this.neighbors.push(grid[i][j + 1]);
+        //console.log('right');
         }
       }
       if (j > 0) {
         if(!wallSquares.includes(`${i},${j-1}`)){
         this.neighbors.push(grid[i][j - 1]);
+        //console.log('left');
         }
       }
     };
