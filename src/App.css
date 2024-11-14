@@ -148,3 +148,7 @@
 .selectedButton{
   border-color: black;
 }
+
+.path{
+  background-color: darkgreen;
+}

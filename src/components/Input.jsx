@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useState } from "react";
 
-export default function Input({ numRows, onRowChange, numCols, onColChange, editStart, setEditStart, editEnd, setEditEnd, editWalls, setEditWalls }) {
+export default function Input({ numRows, onRowChange, numCols, onColChange, editStart, setEditStart, editEnd, setEditEnd, editWalls, setEditWalls, resetPath }) {
   const [rowCount, setRowCount] = useState(numRows);
   const [colCount, setColCount] = useState(numCols);
   const [isEditingRows, setIsEditingRows] = useState(false);
@@ -66,19 +66,19 @@ export default function Input({ numRows, onRowChange, numCols, onColChange, edit
     );
   }
 
-  let editStartSquareButton = <button onClick={() => {setEditStart(true); setEditEnd(false); setEditWalls(false) }} className="button-4 greenButton">Select Start Square</button>
+  let editStartSquareButton = <button onClick={() => {setEditStart(true); setEditEnd(false); setEditWalls(false); resetPath([]) }} className="button-4 greenButton">Select Start Square</button>
 
   if(editStart){
     editStartSquareButton = <button onClick={() => setEditStart(false)} className="button-4 greenButton selectedButton">Stop Selecting</button>
   }
 
-  let editEndSquareButton = <button onClick={() => {setEditEnd(true); setEditStart(false); setEditWalls(false)}} className="button-4 pinkButton">Select End Square</button>
+  let editEndSquareButton = <button onClick={() => {setEditEnd(true); setEditStart(false); setEditWalls(false); resetPath([])}} className="button-4 pinkButton">Select End Square</button>
 
   if(editEnd){
     editEndSquareButton = <button onClick={() => setEditEnd(false)} className="button-4 pinkButton selectedButton">Stop Selecting</button>
   }
 
-  let editWallButton = <button onClick={() => {setEditWalls(true); setEditStart(false); setEditEnd(false)}} className="button-4 blueButton">Select Walls</button>
+  let editWallButton = <button onClick={() => {setEditWalls(true); setEditStart(false); setEditEnd(false); resetPath([])}} className="button-4 blueButton">Select Walls</button>
 
   if(editWalls){
     editWallButton = <button onClick={() => setEditWalls(false)} className="button-4 blueButton selectedButton">Stop Selecting</button>

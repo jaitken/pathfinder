@@ -16,6 +16,8 @@ function App() {
   const [endSquare, setEndSquare] = useState("3,3");
   const [editingEndSquare, setEditingEndSquare] = useState(false);
 
+  const [finalPath, setFinalPath] = useState([]);
+
   const grid = [];
   const displayGrid = [];
 
@@ -62,6 +64,9 @@ function App() {
     }
     if (`${r},${c}` === endSquare) {
       return "gridSquare end";
+    }
+    if (finalPath.includes(`${r},${c}`)) {
+      return "gridSquare path";
     }
     return "gridSquare";
   }
@@ -207,7 +212,6 @@ function App() {
             path.push(temp.parent);
             temp = temp.parent;
           }
-          console.log("DONE!");
           // return the traced path
           return path.reverse();
         }
@@ -243,8 +247,15 @@ function App() {
       return [];
     }
 
-    console.log(search());
+    let pathAsStringArray = search().map((item)=>{
+      return String(item.x+','+item.y);
+    })
+
+
+    setFinalPath(pathAsStringArray)
   }
+
+  console.log(finalPath);
 
   return (
     <div>
@@ -259,6 +270,7 @@ function App() {
         setEditEnd={setEditingEndSquare}
         editWalls={editingWallSquares}
         setEditWalls={setEditingWallSquares}
+        resetPath={setFinalPath}
       ></Input>
       <button onClick={runAStarSearch}>Search</button>
       <div className="mainGrid">{displayGrid.map((item) => item)}</div>

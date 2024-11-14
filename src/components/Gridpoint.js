@@ -13,10 +13,8 @@ export default function GridPoint(x, y, rows, cols, wallSquares) {
       let j = this.y;
       if (i < rows - 1) {
         if(!wallSquares.includes(`${i+1},${j}`)){
-            
                 this.neighbors.push(grid[i + 1][j]);
                 //console.log('above');
-            
         }
       }
       if (i > 0) {
