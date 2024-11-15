@@ -15,6 +15,7 @@ function App() {
   const [editingStartSquare, setEditingStartSquare] = useState(false);
   const [endSquare, setEndSquare] = useState("3,3");
   const [editingEndSquare, setEditingEndSquare] = useState(false);
+  const [showGridNumbers, setShowGridNumbers] = useState(false);
 
   const [finalPath, setFinalPath] = useState([]);
 
@@ -22,7 +23,6 @@ function App() {
   const displayGrid = [];
 
   function handleSelect(row, col) {
-    console.log(row + "," + col);
 
     if (editingWallSquares) {
       if (`${row},${col}` === startSquare || `${row},${col}` === endSquare) {
@@ -71,6 +71,28 @@ function App() {
     return "gridSquare";
   }
 
+  //find out if start/end sqaure is within grid, if not reset it to be within grid 
+
+  let startSquareRow = startSquare.substring(0, startSquare.indexOf(","));
+  let startSquareCol = startSquare.substring(startSquare.indexOf(",") + 1)
+  let endSquareRow = endSquare.substring(0, endSquare.indexOf(","));
+  let endSquareCol = endSquare.substring(endSquare.indexOf(",") + 1)
+  if(startSquareRow > numRows - 1){
+    setStartSquare('0,0');
+  }
+
+  if(startSquareCol > numCols - 1){
+    setStartSquare('0,0');
+  }
+
+  if(endSquareRow > numRows - 1){
+    setEndSquare(`${numRows-1},${numCols-1}`);
+  }
+  if(endSquareCol > numCols - 1){
+    setEndSquare(`${numRows-1},${numCols-1}`);;
+  }
+
+
   for (let r = 0; r < numRows; r++) {
     grid[r] = [];
     for (let c = 0; c < numCols; c++) {
@@ -81,7 +103,7 @@ function App() {
           key={r + " " + c}
           onClick={() => handleSelect(r, c)}
         >
-          {`${r},${c}`}
+          {showGridNumbers ? `${r},${c}` : ''}
         </div>
       );
     }
@@ -180,7 +202,6 @@ function App() {
     setFinalPath(pathAsStringArray);
   }
 
-  console.log(finalPath);
 
   return (
     <div>
@@ -196,8 +217,11 @@ function App() {
         editWalls={editingWallSquares}
         setEditWalls={setEditingWallSquares}
         resetPath={setFinalPath}
+        findPath={runAStarSearch}
+        resetWalls={setSelectedSquares}
+        setShowGrid={setShowGridNumbers}
+        showGrid={showGridNumbers}
       ></Input>
-      <button onClick={runAStarSearch}>Search</button>
       <div className="mainGrid">{displayGrid.map((item) => item)}</div>
     </div>
   );

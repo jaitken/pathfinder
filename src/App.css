@@ -3,13 +3,19 @@
 }
 
 .mainInput{
-  width: 95%;
+  width: 30%;
   margin: auto;
   text-align: center;
   margin-top: 2rem;
   padding: 5px;
-  border: 1px solid black; 
   padding-top: 10px;
+  min-width: 205px;
+}
+.innerInput{
+  width: 33%;
+  margin: auto;
+  text-align: left;
+  min-width: 180px;
 }
 
 .colDiv{
