@@ -1,6 +1,10 @@
 /* eslint-disable */
 import { useState } from "react";
 
+function isNumeric(num){
+  return !isNaN(num)
+};
+
 export default function Input({
   numRows,
   onRowChange,
@@ -22,6 +26,7 @@ export default function Input({
   const [colCount, setColCount] = useState(numCols);
   const [isEditingRows, setIsEditingRows] = useState(false);
   const [isEditingCols, setIsEditingCols] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   function handleInputChange(inputType) {
     if (inputType === "rows") {
@@ -35,14 +40,26 @@ export default function Input({
     if (inputType === "rows") {
       setIsEditingRows((editing) => !editing);
       if (isEditingRows) {
-        onRowChange(rowCount);
+        if(rowCount > 0 && isNumeric(rowCount)){
+          onRowChange(rowCount);
+        } else{
+          setErrorMessage(true);
+          return;
+        }
       }
     } else {
       setIsEditingCols((editing) => !editing);
       if (isEditingCols) {
-        onColChange(colCount);
+        if(colCount > 0 && isNumeric(colCount)){
+          onColChange(colCount);
+        } 
+        else {
+          setErrorMessage(true);
+          return;
+        }
       }
     }
+    setErrorMessage(false);
   }
 
   let displayNumRows = (
@@ -201,6 +218,7 @@ export default function Input({
 
   return (
     <div className="mainInput">
+      <h1>A * Path Finding</h1>
       <div className="innerInput">
         <div className="rowDiv">
           {displayNumRows}
@@ -215,6 +233,7 @@ export default function Input({
           </button>
         </div>
       </div>
+      {errorMessage ? <h4> Enter a valid amount of rows and columns</h4> : ''}
       {editStartSquareButton}
       {editEndSquareButton}
       {editWallButton}

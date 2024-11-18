@@ -7,13 +7,13 @@ import GridPoint from "./components/Gridpoint";
 import heuristic from "./components/heuristic";
 
 function App() {
-  const [numRows, setNumRows] = useState(4);
-  const [numCols, setNumCols] = useState(4);
+  const [numRows, setNumRows] = useState(5);
+  const [numCols, setNumCols] = useState(5);
   const [selectedSquares, setSelectedSquares] = useState([]);
   const [editingWallSquares, setEditingWallSquares] = useState(false);
   const [startSquare, setStartSquare] = useState("0,0");
   const [editingStartSquare, setEditingStartSquare] = useState(false);
-  const [endSquare, setEndSquare] = useState("3,3");
+  const [endSquare, setEndSquare] = useState("4,4");
   const [editingEndSquare, setEditingEndSquare] = useState(false);
   const [showGridNumbers, setShowGridNumbers] = useState(false);
 
@@ -92,23 +92,25 @@ function App() {
     setEndSquare(`${numRows-1},${numCols-1}`);;
   }
 
-
-  for (let r = 0; r < numRows; r++) {
-    grid[r] = [];
-    for (let c = 0; c < numCols; c++) {
-      grid[r][c] = new GridPoint(r, c, numRows, numCols, selectedSquares);
-      displayGrid.push(
-        <div
-          className={getGridClass(r, c)}
-          key={r + " " + c}
-          onClick={() => handleSelect(r, c)}
-        >
-          {showGridNumbers ? `${r},${c}` : ''}
-        </div>
-      );
+  
+    for (let r = 0; r < numRows; r++) {
+      grid[r] = [];
+      for (let c = 0; c < numCols; c++) {
+        grid[r][c] = new GridPoint(r, c, numRows, numCols, selectedSquares);
+        displayGrid.push(
+          <div
+            className={getGridClass(r, c)}
+            key={r + " " + c}
+            onClick={() => handleSelect(r, c)}
+          >
+            {showGridNumbers ? `${r},${c}` : ''}
+          </div>
+        );
+      }
+      displayGrid.push(<br key={r + " br"}></br>);
     }
-    displayGrid.push(<br key={r + " br"}></br>);
-  }
+  
+  
 
   function runAStarSearch() {
     //A * algorith setup
@@ -222,7 +224,7 @@ function App() {
         setShowGrid={setShowGridNumbers}
         showGrid={showGridNumbers}
       ></Input>
-      <div className="mainGrid">{displayGrid.map((item) => item)}</div>
+      {(numCols > 0 && numRows > 0) ? <div className="mainGrid">{displayGrid.map((item) => item)}</div> : <h3>Please enter valid row and column numbers</h3> }
     </div>
   );
 }
